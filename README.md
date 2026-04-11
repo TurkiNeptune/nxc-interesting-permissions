@@ -22,15 +22,22 @@ You can modify the module's behavior using the `-o` flag:
 
 * **Show Built-in Objects (`builtin=1`)**
   Includes default Active Directory objects (like Domain Admins, Pre-Windows 2000, etc.) that are normally filtered out.
+
+
   `nxc ldap IP -u USER -p PASSWORD -M interesting_perms -o builtin=1`
 
 * **Targeted Self-Audit (`self=1`)**
   Filters the output to *only* show permissions explicitly assigned to the user you authenticated with. Perfect for quick triage of a newly compromised account.
+
+  
   `nxc ldap IP -u USER -p PASSWORD -M interesting_perms -o self=1`
 
 * **Effective Nested Permissions (`tokengroup=1`)**
   Queries the Domain Controller for your `tokenGroups` to unroll all nested groups your user belongs to. It checks the ACLs against your massive list of inherited SIDs to uncover hidden escalation paths.
+
+  
   `nxc ldap IP -u USER -p PASSWORD -M interesting_perms -o tokengroup=1`
+  
 
 *(Note: You can combine options like `-o self=1 builtin=1` if needed, though `tokengroup` handles its own logic automatically).*
 
