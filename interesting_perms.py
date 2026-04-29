@@ -8,6 +8,7 @@ class NXCModule:
     supported_protocols = ['ldap']
     opsec_safe = True
     multiple_hosts = True
+    category = CATEGORY.ENUMERATION
 
     def options(self, context, module_options):
         self.show_builtin = False
